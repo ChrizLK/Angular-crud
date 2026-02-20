@@ -2,20 +2,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, Inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { NgFor, NgForOf } from '@angular/common';
-
-interface Book {
-id:number,
-title :string,
-author : string,
-isbn : string
-publishedDate: Date
-}
+import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { NgFor, NgForOf, NgIf } from '@angular/common';
+import { Book } from './models/book';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,FormsModule,NgForOf,NgFor],
+  imports: [RouterOutlet, FormsModule, NgForOf, NgFor, NgIf],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -24,10 +17,11 @@ export class App {
 
   http = inject(HttpClient);
   apiUrl = 'http://localhost:2300/api/Books';
-
   books: Book[] = [];
   form: Book = {  title: '', author: '',id:0 , publishedDate: new Date , isbn:'' };
   editingId: number | null = null;
+
+
 
   // READ
   load() {

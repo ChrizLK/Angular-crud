@@ -1,14 +1,15 @@
+<h2 class="maintitle">Book Management Application</h2>
 <h2>Add Book </h2>
 
 <form (ngSubmit)="save()">
 
-  <input [(ngModel)]="form.id" name="id" placeholder="id" disabled="true" />
-  <input [(ngModel)]="form.title" name="title" placeholder="Title" required />
-  <input [(ngModel)]="form.author" name="author" placeholder="Author" required />
-  <input [(ngModel)]="form.isbn" name="isbn" placeholder="ISBN" required />
-  <input type="date" [(ngModel)]="form.publishedDate" name="publishedDate" placeholder="publishedDate" required />
+  <input [hidden]="true" [(ngModel)]="form.id" name="id" placeholder="id" disabled="true" />
+  Book Title : <input [(ngModel)]="form.title" id="title" name="title" placeholder="Title" required minlength="3"/>
+  Author :<input [(ngModel)]="form.author" name="author" placeholder="Author" required />
+  ISBN :<input [(ngModel)]="form.isbn" name="isbn" placeholder="ISBN" required />
+  Published Date : <input type="date" [(ngModel)]="form.publishedDate" name="publishedDate" placeholder="publishedDate" required />
 
-  <button type="submit">
+  <button type="submit" class="submit">
     {{ editingId ? 'Update' : 'Create' }}
   </button>
 
@@ -17,8 +18,8 @@
 
 <hr>
 
+<h3>Book List</h3>
 <div class="bookList">
-<h2>Book List</h2>
 
 <ul>
   <li *ngFor="let book of books">

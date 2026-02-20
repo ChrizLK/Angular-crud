@@ -1,0 +1,22 @@
+.maintitle
+{
+display: flex;
+justify-content: center;
+}
+
+form button{
+  margin: 3px;
+}
+
+.bookList ul li{
+margin: 2px;
+padding: 2px;
+}
+
+.bookList ul li button{
+margin: 3px;
+}
+
+form input {
+  margin: 2px;
+}
